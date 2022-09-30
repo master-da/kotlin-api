@@ -1,14 +1,11 @@
 package com.tsunderead.asynctask
 
+import android.os.AsyncTask.execute
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.tsunderead.asynctask.databinding.ActivityAsyncTaskBinding
+import com.tsunderead.kotlin_api.ApiCall
 
 class AsyncTaskActivity : AppCompatActivity() {
 
@@ -17,5 +14,11 @@ class AsyncTaskActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_async_task)
+
+        val apicall = findViewById<Button>(R.id.apicall)
+        apicall.setOnClickListener {
+            ApiCall().execute("manga")
+        }
+
     }
 }
