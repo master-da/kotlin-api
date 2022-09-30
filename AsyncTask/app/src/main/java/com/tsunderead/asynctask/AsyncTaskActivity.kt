@@ -43,7 +43,9 @@ class AsyncTaskActivity : AppCompatActivity(), NetworkCaller<JSONObject> {
 
     // Overrides NetworkCaller methods
     override fun onNetworkCallSuccess(result: JSONObject?) {
+//        Log.i(tag, result.toString())
 
+        // The Following code only configures the UI elements.
         val mangaList = result!!.getJSONArray("data")
         apiResponce.text = "Api Call Successful\nReceived ${mangaList.length()} data"
 
@@ -59,7 +61,6 @@ class AsyncTaskActivity : AppCompatActivity(), NetworkCaller<JSONObject> {
             }
         }
         recyclerView.adapter = RCAdapter(lst)
-//        Log.i(tag, result.toString())
     }
 
     override fun onNetworkCallFail() {
