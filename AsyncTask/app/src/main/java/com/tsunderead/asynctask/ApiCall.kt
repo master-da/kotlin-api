@@ -2,13 +2,14 @@ package com.tsunderead.kotlin_api
 
 import android.os.AsyncTask
 import android.util.Log
+import com.tsunderead.asynctask.helperpackage.NetworkCaller
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-class ApiCall(): AsyncTask<String, Void, JSONObject>() {
+class ApiCall(private val parent: NetworkCaller<JSONObject>): AsyncTask<String, Void, JSONObject>() {
 
     private val tag = "apicall"
     private val api_url = "https://api.mangadex.org"
@@ -46,10 +47,10 @@ class ApiCall(): AsyncTask<String, Void, JSONObject>() {
     }
 
     override fun onPostExecute(result: JSONObject?) {
-        Log.i(tag, result.toString())
+        parent.onNetworkCallSuccess(result)
     }
 
     override fun onCancelled () {
-        Log.e(tag, "Api Call Cancelled")
+        parent.onNetworkCallFail()
     }
 }
