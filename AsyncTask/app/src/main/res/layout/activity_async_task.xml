@@ -8,14 +8,35 @@
     tools:context=".AsyncTaskActivity">
 
 
-    <Button
-        android:id="@+id/apicall"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Make Api Call" />
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical"
+        android:paddingTop="40dp"
+        android:paddingBottom="40dp">
 
-    <TextView
-        android:id="@+id/apiResponce"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/apicall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Make Api Call" />
+
+        <TextView
+            android:id="@+id/apiResponce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
 </androidx.appcompat.widget.LinearLayoutCompat>
