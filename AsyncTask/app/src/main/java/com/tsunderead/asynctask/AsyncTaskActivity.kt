@@ -34,6 +34,8 @@ class AsyncTaskActivity : AppCompatActivity(), NetworkCaller<JSONObject> {
         val apicall = findViewById<Button>(R.id.apicall)
         apicall.setOnClickListener {
             apiResponce.text = "Starting api call..."
+            lst.clear()
+            recyclerView.adapter = RCAdapter(lst)
             ApiCall(this).execute("manga")
         }
 
@@ -41,7 +43,6 @@ class AsyncTaskActivity : AppCompatActivity(), NetworkCaller<JSONObject> {
 
     // Overrides NetworkCaller methods
     override fun onNetworkCallSuccess(result: JSONObject?) {
-
 
         val mangaList = result!!.getJSONArray("data")
         apiResponce.text = "Api Call Successful\nReceived ${mangaList.length()} data"
@@ -57,8 +58,8 @@ class AsyncTaskActivity : AppCompatActivity(), NetworkCaller<JSONObject> {
                 lst.add(RCItem("Title $title"))
             }
         }
-Log.i(tag, lst.toString())
         recyclerView.adapter = RCAdapter(lst)
+//        Log.i(tag, result.toString())
     }
 
     override fun onNetworkCallFail() {
